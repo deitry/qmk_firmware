@@ -1,0 +1,42 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
+    },
+    "tasks": [
+        {
+            "label": "build keychron/V1",
+            "type": "shell",
+            "options": {
+                "shell": {
+                    "executable": "C:/QMK_MSYS/usr/bin/bash.exe",
+                    "args": [
+                        "-c"
+                        // "--login"
+                    ]
+                },
+                "env": {
+                    "MSYSTEM": "MINGW64",
+                    "CHERE_INVOKING": "1"
+                },
+            },
+            "command": [
+                // "export QMSYSTEM=\"MINGW64\" ; ",
+                // "export CHERE_INVOKING=\"1\" ; ",
+                ". /etc/profile ;",
+                ". /etc/bash.bashrc ;",
+                "cd D:/workspace/external/Keychron/qmk_firmware ;",
+                "pwd ;",
+                "qmk generate-compilation-database -kb keychron/v1/ansi_encoder -km default ;",
+                "qmk compile -kb keychron/v1/ansi_encoder -km default ;",
+            ]
+        }
+    ]
+}
